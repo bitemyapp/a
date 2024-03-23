@@ -14,8 +14,8 @@ jobs:
               with:
                 ssh_key: ${{ secrets.SSH_KEY }}
                 access_token: ${{ secrets.GH_TOKEN }}
-                sot_repo: git@github.com:bitemyapp/a.git
-                destination_repo: git@github.com:bitemyapp/b.git
+                sot_repo: bitemyapp/a
+                destination_repo: bitemyapp/b
                 push_include: "sync/** .github/workflows/sync-repo.yml"
                 push_move: "sync||"
                 pr_move: |
