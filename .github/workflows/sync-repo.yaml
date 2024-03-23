@@ -1,0 +1,22 @@
+# .github/workflows/sync-repo.yml
+on:
+    push:
+        branches:
+            - main
+jobs:
+    move-code:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                fetch-depth: 0
+            - uses: olivr/copybara-action@v1.2.3
+              with:
+                ssh_key: ${{ secrets.SSH_KEY }}
+                access_token: ${{ secrets.GH_TOKEN }}
+                sot_repo: git@github.com:bitemyapp/a.git
+                destination_repo: git@github.com:bitemyapp/b.git
+                push_include: "sync/** .github/workflows/sync-repo.yml"
+                push_move: "sync||"
+                pr_move: |
+                    ||sync
