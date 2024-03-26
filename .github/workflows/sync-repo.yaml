@@ -26,7 +26,6 @@ jobs:
                 sot_repo: bitemyapp/a
                 destination_repo: bitemyapp/b
                 copybara_options: --force --init-history
-                push_include: "sync/** .github/workflows/sync-repo.yml"
+                push_include: "sync/**"
                 push_move: "sync||"
-                pr_move: |
-                    ||sync
+                workflow: push
